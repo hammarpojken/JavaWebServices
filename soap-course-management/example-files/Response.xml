@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GetCourseDetailsResponse 
+xmlns="http://hammar.com/courses"
+xsi:schemaLocation="http://hammar.com/courses course-details.xsd"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<CourseDetails>
+		<id>123</id>
+		<name>Öppna en dörr på 10 steg</name>
+		<description>Lär dig att öppna en dörr</description>
+	</CourseDetails>
+</GetCourseDetailsResponse>
