@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="CourseDetails" type="{http://hammar.com/courses}CourseDetails"/>
+ *         &lt;element name="info" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,36 +36,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "courseDetails"
+    "info"
 })
-@XmlRootElement(name = "GetCourseDetailsResponse")
-public class GetCourseDetailsResponse {
+@XmlRootElement(name = "deleteResponse")
+public class DeleteResponse {
 
-    @XmlElement(name = "CourseDetails", required = true)
-    protected CourseDetails courseDetails;
+    @XmlElement(required = true)
+    protected String info;
 
     /**
-     * Gets the value of the courseDetails property.
+     * Gets the value of the info property.
      * 
      * @return
      *     possible object is
-     *     {@link CourseDetails }
+     *     {@link String }
      *     
      */
-    public CourseDetails getCourseDetails() {
-        return courseDetails;
+    public String getInfo() {
+        return info;
     }
 
     /**
-     * Sets the value of the courseDetails property.
+     * Sets the value of the info property.
      * 
      * @param value
      *     allowed object is
-     *     {@link CourseDetails }
+     *     {@link String }
      *     
      */
-    public void setCourseDetails(CourseDetails value) {
-        this.courseDetails = value;
+    public void setInfo(String value) {
+        this.info = value;
     }
 
 }

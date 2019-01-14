@@ -9,6 +9,8 @@ import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import com.hammar.courses.CourseDetails;
+import com.hammar.courses.DeleteRequest;
+import com.hammar.courses.DeleteResponse;
 import com.hammar.courses.GetAllCourseDetailsRequest;
 import com.hammar.courses.GetAllCourseDetailsResponse;
 import com.hammar.courses.GetCourseDetailsRequest;
@@ -37,7 +39,26 @@ public class CourseDetailsEndpoint {
 		
 		return mapAllCourseDetails(courses);
 	}
+	@PayloadRoot(namespace="http://hammar.com/courses", localPart="deleteRequest")
+	@ResponsePayload
+	public DeleteResponse deleteRequest(@RequestPayload DeleteRequest request) {
+		int result = service.deleteById(request.getId());
+		
+		
+		return mapDeleteCourse(result);
+	}
 	
+	private DeleteResponse mapDeleteCourse(int result) {
+		DeleteResponse response = new DeleteResponse();
+		if(result == 0) {
+			response.setInfo("No deletion occured");
+		}else  {
+			response.setInfo("Deletion successful");
+		}
+		
+		
+		return response;
+	}
 	private GetCourseDetailsResponse mapCourseDetails(Course course) {
 		GetCourseDetailsResponse response = new GetCourseDetailsResponse();
 		

@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+
 import com.hammar.webservices.soap.soapcoursemanagement.soap.bean.Course;
 
 @Component
@@ -51,5 +52,7 @@ public class CourseDetailService {
 		}
 		return 0;
 	}
+
+
 
 }
