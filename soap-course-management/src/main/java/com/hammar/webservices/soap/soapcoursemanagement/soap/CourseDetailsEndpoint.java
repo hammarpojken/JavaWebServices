@@ -22,7 +22,9 @@ public class CourseDetailsEndpoint {
 		cd.setName("Micro");
 		cd.setDescription("Fun with microservices");
 		response.setCourseDetails(cd);
+		
 		return response;
 	}
+
 
 }
