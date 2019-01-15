@@ -1,11 +1,13 @@
 package com.hammar.rest.webservices.restfulwebservice.user;
-
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
 import java.net.URI;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,11 +29,16 @@ public class UserResource {
 	}
 
 	@GetMapping(path = "/users/{id}")
-	public User getUserById(@PathVariable int id) {
+	public Resource<User> getUserById(@PathVariable int id) {
 		User user = dao.FindOne(id);
 		if(user == null)
 			throw new UserNotFoundException("id-" + id);
-		return user;
+		
+		Resource<User> resource = new Resource<User>(user);
+		
+		ControllerLinkBuilder linkTo = linkTo(methodOn(this.getClass()).getAllUsers());
+		resource.add(linkTo.withRel("all-users"));
+		return resource;
 	}
 	@DeleteMapping(path = "/users/{id}")
 	public void deleteUserById(@PathVariable int id) {
