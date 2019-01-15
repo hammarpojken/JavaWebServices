@@ -2,10 +2,15 @@ package com.hammar.rest.webservices.restfulwebservice.user;
 
 import java.util.Date;
 
-public class User {
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
+public class User {
+	
+	@Size(min=2, message="Name should have atleast 2 characters")
 	private String name;
 	private Integer id;
+	@Past
 	private Date birthDate;
 	
 	protected User() {
