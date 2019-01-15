@@ -2,18 +2,27 @@ package com.hammar.rest.webservices.restfulwebservice.user;
 
 import java.util.Date;
 
+import javax.annotation.Generated;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description="Details about the user")
+@Entity
 public class User {
 	
 	@Size(min=2, message="Name should have atleast 2 characters")
 	@ApiModelProperty(notes="Atlest 2 characters")
 	private String name;
+	
+	@Id
+	@GeneratedValue 
 	private Integer id;
+	
 	@Past
 	@ApiModelProperty(notes="Should be in past")
 	private Date birthDate;
